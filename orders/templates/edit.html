@@ -1,0 +1,100 @@
+{% extends 'layout.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %} Edit Order {% endblock %}
+
+{% block body %}
+
+                <section>
+					<div class="section-body">
+						<div class="row">
+
+							<!-- BEGIN  - FORM -->
+							<div class="col-lg-12">
+								<div class="card">
+									<div class="card-head style-primary">
+										<header>Add Order</header>
+										<div class="tools">
+											<a class="btn btn-icon-toggle btn-collapse"><i class="fa fa-angle-down"></i></a>
+											<a class="btn btn-icon-toggle btn-close"><i class="md md-close"></i></a>
+										</div>
+									</div>
+									<div class="card-body">
+
+										<form class="form" role="form" action="" method="post"> {% csrf_token %}
+
+											<div class="row">
+												<div class="col-sm-6">
+													<header>Customer Info</header>
+													<div class="form-group floating-label">
+														{{ form.name | add_class:'form-control' }}
+														<label for="regular2">Customer Name</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ form.phone | add_class:'form-control' }}
+														<label for="regular2">Phone Number</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ form.address | add_class:'form-control' | attr:'rows:2'}}
+														<label for="textarea2">Address</label>
+													</div>
+												</div>
+												<div class="col-sm-6">
+													<header >Order Info</header>
+													<div class="form-group">
+														{{ form.delivery_date | add_class:'form-control' | attr:'type:date'}}
+														<label for="regular2">Delivery Dater</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ form.product_id | add_class:'form-control' | attr:'rows:2'}}
+														<label for="textarea2">Product ID</label>
+													</div>
+													<div class="row">
+														<div class="col-sm-6">
+															<div class="form-group floating-label">
+																{{ form.payment_option| add_class:'form-control' }}
+																<label for="select2">Payment Options</label>
+															</div>
+														</div>
+														<div class="col-sm-6">
+															<div class="form-group floating-label">
+																{{ form.amount | add_class:'form-control'}}
+																<label for="regular2">Amount</label>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-12">
+													<hr>
+													<label class="radio-inline radio-styled col-sm-2">
+														<b>Order Status :</b>
+													</label>
+													<div class="col-md-10">
+
+                                                        {% for radio in form.order_status %}
+                                                            <label class="radio-inline radio-styled">
+                                                                {{ radio }}
+                                                            </label>
+                                                        {% endfor %}
+
+													</div>
+												</div>
+												<div class="col-md-12">
+													<hr>
+													<div class="card-actionbar-row">
+														<input type="submit" class="btn btn-flat btn-primary ink-reaction" value="SUBMIT">
+													</div>
+												</div>
+											</div>
+										</form>
+									</div><!--end .card-body -->
+								</div><!--end .card -->
+							</div><!--end .col -->
+							<!-- END FORM - TIME ON SITE -->
+
+						</div><!--end .row -->
+					</div><!--end .section-body -->
+				</section>
+
+{% endblock %}

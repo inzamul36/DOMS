@@ -1,0 +1,92 @@
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Login | DjangoOMS</title>
+
+		<!-- BEGIN META -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="keywords" content="your,keywords">
+		<meta name="description" content="Short explanation about this website">
+		<!-- END META -->
+
+		<!-- BEGIN STYLESHEETS -->
+		<link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css'/>
+		<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+		<link type="text/css" rel="stylesheet" href="{% static 'css/materialadmin.css' %}" />
+		<link type="text/css" rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" />
+		<link type="text/css" rel="stylesheet" href="{% static 'css/material-design-iconic-font.min.css' %}" />
+		<!-- END STYLESHEETS -->
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="../../assets/js/libs/utils/html5shiv.js?1403934957"></script>
+		<script type="text/javascript" src="../../assets/js/libs/utils/respond.min.js?1403934956"></script>
+		<![endif]-->
+	</head>
+	<body class="menubar-hoverable header-fixed ">
+
+		<!-- BEGIN LOGIN SECTION -->
+		<section class="section-account">
+			<div class="img-backdrop" style="background-image: url('img/img16.jpg')"></div>
+			<!--<div class="spacer"></div>-->
+			<div class="card contain-sm style-transparent" style="max-width:450px">
+				<div class="card-body">
+                    <h2 class="text-center" style="font-size: 40px; margin-bottom: 20px; color: #f70b0b">INFORTECH <br><span style="color: #1ab394; font-weight: 900">Solutions</span></h2>
+					<br/>
+					<div class="card">
+						<div class="card-body">
+							<span class="text-lg text-bold text-primary">Welcome to DjangoOMS</span>
+							<br/><br/>
+							<form class="form floating-label" action="{% url 'login' %}" accept-charset="utf-8" method="post">
+
+		                        {% csrf_token %}
+
+		                        {% if form.errors %}
+
+		                            <div class="alert alert-danger">
+		                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		                                <strong>Error!</strong> Your username and password didn't match. Please try again.
+		                            </div>
+
+		                        {% endif %}
+
+								<div class="form-group">
+									{{ form.username|add_class:"form-control" }}
+									<label for="username">Username</label>
+								</div>
+								<div class="form-group">
+									{{ form.password|add_class:"form-control" }}
+									<label for="password">Password</label>
+								</div>
+								<br/>
+								<div class="row">
+									<div class="col-xs-6 text-left">
+
+									</div><!--end .col -->
+									<div class="col-xs-6 text-right">
+										<button class="btn btn-primary btn-raised" type="submit">Login</button>
+									</div><!--end .col -->
+								</div><!--end .row -->
+							</form>
+						</div>
+					</div>
+				</div><!--end .card -->
+			</div>
+			<em class="text-caption text-center" style="margin-bottom: 0px">Copyright © {% now 'Y' %} INFORTECH Solutions</em>
+            <p class="text-center">BY <strong><span style="color: green">INZAMUL</span><span style="color:red"> HAQUE</span></strong></p>
+		</section>
+		<!-- END LOGIN SECTION -->
+
+		<!-- BEGIN JAVASCRIPT -->
+		<script src="{% static 'js/libs/jquery/jquery-1.11.2.min.js' %}"></script>
+		<script src="{% static 'js/libs/bootstrap/bootstrap.min.js' %}"></script>
+
+		<script src="{% static 'js/core/AppForm.js' %}"></script>
+		<!-- END JAVASCRIPT -->
+
+	</body>
+</html>

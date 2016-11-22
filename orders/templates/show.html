@@ -1,0 +1,127 @@
+{% extends 'layout.html' %}
+
+{% load staticfiles %}
+
+{% block title %} Print Order {% endblock %}
+
+{% block body %}
+
+            {% for order in order %}
+                <section>
+                    <div class="section-header">
+						<ol class="breadcrumb">
+							<li class="active">Invoice</li>
+						</ol>
+					</div>
+					<div class="section-body">
+                        <div class="row">
+							<div class="col-lg-12">
+								<div class="card card-printable style-default-light">
+									<div class="card-head">
+										<div class="tools">
+											<div class="btn-group">
+												<a class="btn btn-floating-action btn-primary" href="javascript:void(0);" onclick="javascript:window.print();"><i class="md md-print"></i></a>
+											</div>
+										</div>
+									</div><!--end .card-head -->
+									<div class="card-body style-default-bright" id="print">
+
+										<!-- BEGIN INVOICE HEADER -->
+										<div class="row">
+											<!--<div class="col-xs-2">
+												<img src="{% static 'img/django_logo.png' %}" class="invoice_logo" width="100%">
+											</div>-->
+											<div class="col-xs-8">
+												<h1 class="text-light" style="margin-top: 0px; color: #f70b0b">INFORTECH <strong class="text-accent-dark" style="color: #1ab394">Solutions</strong></h1>
+												<p>Company address, Road: xx<br>Dhaka 12xx</p>
+											</div>
+											<div class="col-xs-4 text-right">
+												<h1 class="text-light text-default-light">Invoice</h1>
+											</div>
+										</div><!--end .row -->
+										<!-- END INVOICE HEADER -->
+
+										<br/>
+
+										<!-- BEGIN INVOICE DESCRIPTION -->
+										<div class="row">
+											<div class="col-xs-8">
+												<h4 class="text-light">Prepared for</h4>
+												<address>
+													<strong>{{ order.name }}</strong><br>
+													{{ order.address }}
+													<b>Phone:</b> {{ order.phone }}
+												</address>
+											</div><!--end .col -->
+											<div class="col-xs-4">
+												<div class="well">
+													<div class="clearfix">
+														<div class="pull-left"> INVOICE NO : </div>
+														<div class="pull-right"> {{ order.id }} </div>
+													</div>
+													<div class="clearfix">
+														<div class="pull-left"> INVOICE DATE : </div>
+														<div class="pull-right">  </div>
+													</div>
+													<div class="clearfix">
+														<div class="pull-left"> DELEVERY DATE : </div>
+														<div class="pull-right"> {{ order.delivery_date }} </div>
+													</div>
+												</div>
+											</div><!--end .col -->
+										</div><!--end .row -->
+										<!-- END INVOICE DESCRIPTION -->
+
+										<br/>
+
+										<!-- BEGIN INVOICE PRODUCTS -->
+										<div class="row">
+											<div class="col-md-12">
+												<table class="table">
+													<thead>
+														<tr>
+															<th style="width:60px" class="text-center">ID</th>
+															<th class="text-left">DESCRIPTION</th>
+															<th style="width:140px" class="text-right"></th>
+															<th style="width:90px" class="text-right">TOTAL</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td class="text-center">1</td>
+															<td>{{ order.product_id }}</td>
+															<td class="text-right"></td>
+															<td class="text-right">Tk {{ order.amount }}</td>
+														</tr>
+														<tr>
+															<td colspan="2" rowspan="4">
+																<h3 class="text-light opacity-50">Invoice notes</h3>
+																<p><small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</small></p>
+																<p><strong><em>Recvied By __________________</em></strong></p>
+															</td>
+															<td class="text-right"><strong>Subtotal</strong></td>
+															<td class="text-right">TK {{ order.amount }}</td>
+														</tr>
+														<tr>
+															<td class="text-right hidden-border"><strong>VAT</strong></td>
+															<td class="text-right hidden-border">$0.00</td>
+														</tr>
+														<tr>
+															<td class="text-right"><strong class="text-lg text-accent">Total</strong></td>
+															<td class="text-right"><strong class="text-lg text-accent">Tk {{ order.amount }}</strong></td>
+														</tr>
+													</tbody>
+												</table>
+											</div><!--end .col -->
+										</div><!--end .row -->
+										<!-- END INVOICE PRODUCTS -->
+
+									</div><!--end .card-body -->
+								</div><!--end .card -->
+							</div><!--end .col -->
+						</div><!--end .row -->
+					</div><!--end .section-body -->
+                </section>
+            {% endfor %}
+
+{% endblock %}
