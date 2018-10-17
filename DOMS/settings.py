@@ -70,10 +70,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'DOMS.wsgi.application'
-
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static/orders')
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
@@ -133,6 +129,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'orders/static')
 
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
