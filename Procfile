@@ -1,0 +1,1 @@
+web: gunicorn DOMS.wsgi --log-file -
