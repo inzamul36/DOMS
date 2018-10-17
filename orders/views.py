@@ -20,11 +20,11 @@ def new(request):
         form = OrderForm(request.POST)
         if form.is_valid():
             if form.save():
-                return redirect('/', messages.success(request, 'Order was successfully created.', 'alert-success'))
+                return redirect('/', messages.success(request, 'Pedido adicionado com sucesso.', 'alert-success'))
             else:
-                return redirect('/', messages.error(request, 'Data is not saved', 'alert-danger'))
+                return redirect('/', messages.error(request, 'Data está vazio', 'alert-danger'))
         else:
-            return redirect('/', messages.error(request, 'Form is not valid', 'alert-danger'))
+            return redirect('/', messages.error(request, 'Formulário inválido', 'alert-danger'))
     else:
         form = OrderForm()
         return render(request, 'new.html', {'form':form})
@@ -36,11 +36,11 @@ def edit(request, order_id):
         form = OrderForm(request.POST, instance=order)
         if form.is_valid():
             if form.save():
-                return redirect('/', messages.success(request, 'Order was successfully updated.', 'alert-success'))
+                return redirect('/', messages.success(request, 'Pedido atualizado com sucesso.', 'alert-success'))
             else:
-                return redirect('/', messages.error(request, 'Data is not saved', 'alert-danger'))
+                return redirect('/', messages.error(request, 'Data vazia', 'alert-danger'))
         else:
-            return redirect('/', messages.error(request, 'Form is not valid', 'alert-danger'))
+            return redirect('/', messages.error(request, 'Formulário inválido', 'alert-danger'))
     else:
         form = OrderForm(instance=order)
         return render(request, 'edit.html', {'form':form})
@@ -49,4 +49,4 @@ def edit(request, order_id):
 def destroy(request, order_id):
     order = Order.objects.get(id=order_id)
     order.delete()
-    return redirect('/', messages.success(request, 'Order was successfully deleted.', 'alert-success'))
+    return redirect('/', messages.success(request, 'Pedido excluído com sucesso.', 'alert-success'))
