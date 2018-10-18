@@ -127,9 +127,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
-
+AWS_S3_DOMAIN = 's3-sa-east-1.amazonaws.com'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = '/static/'
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_DOMAIN, 'sematec/static')
 
 # Extra places for collectstatic to find static files.
 # STATICFILES_DIRS = (
