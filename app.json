@@ -1,0 +1,17 @@
+{
+  "name": "dindinsematec",
+  "scripts": {
+  },
+  "env": {
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "Heroku/django"
+    }
+  ]
+}
